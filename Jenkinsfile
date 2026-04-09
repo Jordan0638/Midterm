@@ -4,7 +4,7 @@ pipeline
 
   environment
   {
-    DOCKER_IMAGE="jordan0638/webapp:latest"
+    DOCKER_IMAGE="jordan0638/webapp"
   }
 
 
