@@ -31,7 +31,11 @@ pipeline
     {
       steps 
       {
-        bat "docker push %DOCKER_IMAGE%"
+        withCredentials([usernamePassword(credentialsId: 'dockerhub',usernameVariable: 'USER', passwordVariable: 'PASS')]) 
+        {
+            bat 'docker login -u %USER% -p %PASS%'
+            bat "docker push %DOCKER_IMAGE%"
+        }
       }
     }
 
@@ -39,7 +43,8 @@ pipeline
     {
       steps 
       {
-        bat "kubectl apply -f deployment.yaml"
+        withCredentials([file(credentialsId: 'kuberconfig', variable:'KUBECONFIG')]) {
+        bat ''' set KUBECONFIG=%KUBECONFIG% kubectl apply -f deployment.yaml --validate=false '''
       }
     }
   }
