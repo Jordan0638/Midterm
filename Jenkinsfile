@@ -14,7 +14,7 @@ pipeline
     {
       steps
       {
-        git branch: "main"
+        git branch: "main",
         url: "https://github.com/Jordan0638/Midterm.git"
       }
     }
