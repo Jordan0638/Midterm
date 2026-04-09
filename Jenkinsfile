@@ -27,6 +27,14 @@ pipeline
       }
     }
 
+    stage("Docker Run")
+    {
+        steps
+        {
+            bat "docker run -d -p 8082:8080 %DOCKER_IMAGE%"
+        }
+    }
+
     stage('Push to DockerHub') 
     {
       steps 

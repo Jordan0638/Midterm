@@ -16,7 +16,7 @@ spec:
         - name: web
           image: jordan0638/webapp
           ports:
-            - containerPort: 82
+            - containerPort: 80
 
 ---
 
@@ -29,6 +29,6 @@ spec:
   selector:
     app: web
   ports:
-    - port: 82
-      targetPort: 82
+    - port: 80
+      targetPort: 80
       nodePort: 30007
