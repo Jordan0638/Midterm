@@ -49,10 +49,12 @@ pipeline
 
     stage('Deploy to Kubernetes') 
     {
-      steps 
-      {
-        bat 'kubectl apply -f deployment.yaml --validate=false'        
-        }
+       steps 
+       {
+            withCredentials([file(credentialsId: 'kuberconfig', variable:'KUBECONFIG')]) 
+            {
+                bat '''set KUBECONFIG=%KUBECONFIG% kubectl apply -f deployment.yaml --validate=false '''
+            }
     }
 }
 }
