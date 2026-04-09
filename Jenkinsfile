@@ -43,9 +43,11 @@ pipeline
     {
       steps 
       {
-        withCredentials([file(credentialsId: 'kuberconfig', variable:'KUBECONFIG')]) {
+        withCredentials([file(credentialsId: 'kuberconfig', variable:'KUBECONFIG')]) 
+        {
         bat ''' set KUBECONFIG=%KUBECONFIG% kubectl apply -f deployment.yaml --validate=false '''
-      }
+        }
+        }
     }
-  }
+}
 }
