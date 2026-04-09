@@ -23,7 +23,7 @@ pipeline
     {
       steps 
       {
-        sh "docker build -t %DOCKER_IMAGE% ."
+        bat "docker build -t %DOCKER_IMAGE% ."
       }
     }
 
@@ -31,7 +31,7 @@ pipeline
     {
       steps 
       {
-        sh "docker push %DOCKER_IMAGE%"
+        bat "docker push %DOCKER_IMAGE%"
       }
     }
 
@@ -39,7 +39,7 @@ pipeline
     {
       steps 
       {
-        sh "kubectl apply -f deployment.yaml"
+        bat "kubectl apply -f deployment.yaml"
       }
     }
   }
