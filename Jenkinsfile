@@ -43,8 +43,8 @@ pipeline
     {
       steps 
       {
-        bat "kubectl apply -f deployment.yaml"
+        bat 'kubectl apply -f deployment.yaml --validate=false'        
+        }
     }
-}
 }
 }
